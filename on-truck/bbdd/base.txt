@@ -1,9 +1,20 @@
+-- Crear la base de datos si no existe
 CREATE DATABASE IF NOT EXISTS gestion_camiones
   CHARACTER SET utf8mb4
   COLLATE utf8mb4_unicode_ci;
 
+-- Usar la base de datos
 USE gestion_camiones;
 
+-- Tabla de usuarios
+CREATE TABLE user (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(180) NOT NULL UNIQUE,
+    roles JSON NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+
+-- Tabla de remolques
 CREATE TABLE remolques (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     matricula VARCHAR(20) NOT NULL UNIQUE,
@@ -12,6 +23,7 @@ CREATE TABLE remolques (
     carga INT
 );
 
+-- Tabla de camiones
 CREATE TABLE camiones (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     matricula VARCHAR(20) NOT NULL UNIQUE,
@@ -31,6 +43,7 @@ CREATE TABLE camiones (
         ON UPDATE CASCADE
 );
 
+-- Tabla de rutas
 CREATE TABLE rutas (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     distancia INT NOT NULL,
@@ -48,3 +61,4 @@ CREATE TABLE rutas (
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
+CREATE DATABASE IF NOT EXISTS gestion_camiones   CHARACTER SET utf8mb4   COLLATE utf8mb4_unicode_ci
